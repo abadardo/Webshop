@@ -9,6 +9,10 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<version.war.plugin>2.1.1</version.war.plugin>
 	</properties>
 	<dependencies>
 		<!-- test dependencies -->
@@ -46,14 +50,24 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<!-- Set the name of the WAR, used as the context root when the app
+           is deployed -->
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
-				<groupId>org.jboss.as.plugins</groupId>
-				<artifactId>jboss-as-maven-plugin</artifactId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${version.war.plugin}</version>
 				<configuration>
-					<skip>false</skip>
+					<!-- Java EE doesn't require web.xml, Maven needs to catch
+                       up! -->
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
+			</plugin>
+			<!-- WildFly plug-in to deploy the WAR -->
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>${version.wildfly.maven.plugin}</version>
 			</plugin>
 		</plugins>
 	</build>
