@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+
 /**
  * The JPA entity class that models the domain object Person. The primary key
  * (id) is generated.
