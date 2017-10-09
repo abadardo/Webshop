@@ -1,2 +1,28 @@
+
+<input 
+  type="text"
+  class="form-control"
+  (input)="onUpdateServerName($event)">
+<button
+  class="btn btn-primary"
+  [disabled] = "!allowNewServer"
+  (click)="onCreateServer()"> Add Server</button>
+<p>{{serverCreationStatus}}</p>
+
+<div *ngFor='let test of appList'>
+    <ul>
+      <li>{{test.ID}}</li>
+      <li>{{test.Name}}</li>
+    </ul>
+</div>
+
+
+
+<label>Server Name</label> 
+
 <app-server></app-server>
 <app-server></app-server>
+
+
+
+

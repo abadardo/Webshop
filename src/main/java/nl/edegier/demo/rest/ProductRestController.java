@@ -12,9 +12,6 @@ import javax.ws.rs.core.Response;
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- * Created by Erwin on 22/05/2017.
- */
 @Path("/product")
 public class ProductRestController {
     @Inject
